@@ -16,14 +16,16 @@ david = Trainer.create(:name=>"David", :specialty=>"muscle_gain", :temperament=>
 jess = Trainer.create(:name=>"Jess", :specialty=>"weight_loss", :temperament=> "mild", :cost_per_hour=> 40)
 anna = Trainer.create(:name=>"Anna", :specialty=>"well_being", :temperament=>"calm", :cost_per_hour=>45)
 
-workout_1 = Workout.create(total_weight_lifted: 100, diet_plan: "Keto", calories_burned: 500, duration_of_workout_minutes: 60)
-workout_2 = Workout.create(total_weight_lifted: 300, diet_plan: "Palio", calories_burned: 1000, duration_of_workout_minutes: 30)
-workout_3 = Workout.create(total_weight_lifted: 50, diet_plan: "Carnivore", calories_burned: 2000, duration_of_workout_minutes: 120)
+workout_1 = Workout.create(total_weight_lifted: 100, workout_type: "weight_lifting", calories_burned: 500, duration_of_workout_minutes: 60)
+workout_2 = Workout.create(total_weight_lifted: 300, workout_type: "cardio", calories_burned: 1000, duration_of_workout_minutes: 30)
+workout_3 = Workout.create(total_weight_lifted: 50, workout_type: "mixed", calories_burned: 2000, duration_of_workout_minutes: 120)
 
 jack.workouts << workout_1 
 jack.workouts << workout_2 
+jess.workouts << workout_3
 
 gym_1.workouts << workout_1
+gym_1.workouts << workout_3
 gym_2.workouts << workout_2 
 
 david.workouts << workout_1

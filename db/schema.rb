@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_202226) do
     t.integer "trainer_id"
     t.integer "gym_id"
     t.integer "total_weight_lifted"
-    t.string "diet_plan"
+    t.string "workout_type"
     t.integer "calories_burned"
     t.integer "duration_of_workout_minutes"
   end

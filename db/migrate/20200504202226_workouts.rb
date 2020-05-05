@@ -5,7 +5,7 @@ class Workouts < ActiveRecord::Migration[5.2]
       t.integer :trainer_id
       t.integer :gym_id
       t.integer :total_weight_lifted
-      t.string :diet_plan
+      t.string :workout_type
       t.integer :calories_burned
       t.integer :duration_of_workout_minutes
     end 
