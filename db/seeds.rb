@@ -21,10 +21,12 @@ workout_2 = Workout.create(total_weight_lifted: 300, diet_plan: "Palio", calorie
 workout_3 = Workout.create(total_weight_lifted: 50, diet_plan: "Carnivore", calories_burned: 2000, duration_of_workout_minutes: 120)
 
 jack.workouts << workout_1 
-ally.workouts << workout_2 
-sally.workouts << workout_3 
+jack.workouts << workout_2 
 
-gym_1.workouts << workout_2 
+gym_1.workouts << workout_1
+gym_2.workouts << workout_2 
 
+david.workouts << workout_1
+jess.workouts << workout_2
 david.workouts << workout_3
 
