@@ -4,7 +4,7 @@ Trainer.delete_all
 Workout.delete_all
 
 
-jack = User.create(name: "Jack", age: 18, desired_workout: "intense", gender: "M")
+jack = User.create(name: "Jack", username: "jack", password: "123", age: 18, desired_workout: "intense", gender: "M")
 ally = User.create(name: "Ally", age: 55, desired_workout: "low-intesity", gender: "F")
 sally = User.create(name: "Sally", age: 35, desired_workout: "mild", gender: "F")
 
