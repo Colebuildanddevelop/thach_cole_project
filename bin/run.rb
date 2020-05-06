@@ -1,3 +1,12 @@
+# TODO
+# create a cool hero title
+# color code responses
+# create a answer, and go back option
+# integrate more functions
+
+
+
+
 require 'pry'
 require_relative '../config/environment'
 $prompt = TTY::Prompt.new
@@ -39,21 +48,37 @@ end
 
 def user_menu(user)
   session = true
+  puts `clear`
   p "Welcome to your own personal workout portal #{user.name}!"
   while session do 
     option = $prompt.select("How can we help you today?", %w(
-      what_gyms_are_availible?
-      what_trainers_are_availible?
+      what_gyms_are_available?
+      which_gym_has_served_the_most_clients?
+      which_gym_has_served_the_least_clients?
+      what_trainers_are_available?
       what_is_my_total_weight_lifted?
+      what_trainer_burned_the_most_calories?
+      what_trainer_has_the_most_experience_lifting_weights?
       end_session
     ))
     case option 
     when "what_is_my_total_weight_lifted?"
+      puts `clear`
       p user.total_weight_for_all_workouts
-    when "what_gyms_are_availible?"
+    when "what_gyms_are_available?"
       p Gym.all.map { |g| g.name }
-    when "what_trainers_are_availible?"
+    when "which_gym_has_served_the_most_clients?"
+      p Gym.most_user
+    when "which_gym_has_served_the_least_clients?"
+      p Gym.least_user
+    when "what_trainers_are_available?"
       p Trainer.all.map { |t| t.name }
+    when "what_trainer_burned_the_most_calories?"
+      t = Trainer.most_calories_burned
+      p "#{t.name} who burned #{t.total_calories_burned} calories"
+    when "what_trainer_has_the_most_experience_lifting_weights?"
+      t = Trainer.most_experience_with_lifting
+      p "#{t.name} who has delivered #{t.num_workouts_with_weight_lifting} weight lifting sessions"
     when "end_session"
       p "ending session"
       session = false
