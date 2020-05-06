@@ -25,8 +25,5 @@ end
 
 main
 
-
-
-
 binding.pry 
 0
