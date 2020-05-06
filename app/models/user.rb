@@ -7,4 +7,29 @@ class User < ActiveRecord::Base
     self.workouts.map { |workout| workout.total_weight_lifted }.sum
   end
 
+  def average_weight_for_all_workouts
+    
+    num_of_workouts_session = self.workouts.length
+    self.total_weight_for_all_workouts / num_of_workouts_session
+  end
+
+  def average_calories_burned
+    total_c_burned = self.workouts.map {|w| w.calories_burned}.sum
+    num_of_workouts_session = self.workouts.length
+    total_c_burned / num_of_workouts_session
+
+  end
+
+  def diet_plan_suggestion
+    if self.average_weight_for_all_workouts >= 200 && self.average_calories_burned >= 1000
+        return "plan A: 2500 calories, 100g protein, 300g carb"
+    elsif self.average_weight_for_all_workouts >= 200 && self.average_calories_burned < 1000
+        return "plan B: 2000 calories, 90g protein, 200g carb"
+    else
+        return "plan C: 1500 calories, 60g protein, 100g carb"
+    end 
+  end 
+
+
+  
 end 

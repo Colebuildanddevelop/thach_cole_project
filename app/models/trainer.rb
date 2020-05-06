@@ -22,4 +22,11 @@ def self.most_experience_with_lifting
     self.all.max_by {|t| t.num_workouts_with_weight_lifting}
 end 
 
+def effective_rate
+    self.cost_per_hour / self.workouts.length
+end  
+
+def self.most_effective_rate
+    self.all.max_by {|t| t.effective_rate}
 end
+end 

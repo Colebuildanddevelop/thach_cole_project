@@ -18,3 +18,7 @@ A user should be able to get a gym with the most users
 A user should be able to get a gym with the least users 
 
 A user should be able to log a workout
+
+A user should be able to get suggestion for their diet plan
+
+A user should be able to get a trainer with the most effective rate (experience/cost per hour)
