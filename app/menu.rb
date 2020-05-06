@@ -1,21 +1,22 @@
 class Menu
   @@prompt = TTY::Prompt.new
-
+  @@session = true
 
   def display_response(resp)
     print_title
     puts "\n"
-    p resp
+    resp.each { |r| 
+      puts r.to_s.colorize(:green).bold.underline
+    }
     puts "\n"
     where_to = @@prompt.select("Where to next?", ["Main menu!", "That is all the help I need!"])
-    session = false if where_to == "That is all the help I need!"
+    @@session = false if where_to == "That is all the help I need!"
   end 
     
   def user_menu(user)
-    session = true
-    while session do 
+    while @@session do 
       print_title
-      p "Welcome to your own personal workout portal #{user.name}!"
+      puts "Welcome to your own personal workout portal #{user.name}!".colorize(:blue).bold
       option = @@prompt.select("How can we help you today?", %w(
         what_gyms_are_available?
         which_gym_has_served_the_most_clients?
@@ -28,11 +29,12 @@ class Menu
       ))
       case option 
       when "what_is_my_total_weight_lifted?"
-        display_response(user.total_weight_for_all_workouts)
+        display_response(["You have lifted a total of #{user.total_weight_for_all_workouts} pounds for all recorded workouts!"])
       when "what_gyms_are_available?"
-        p Gym.all.map { |g| g.name }
+        display_response(Gym.all.map{ |gym| "#{gym.name}" })
       when "which_gym_has_served_the_most_clients?"
         p Gym.most_user
+        display_response(["According to our calculations #{Gym.most_user.name} is the gym with"])
       when "which_gym_has_served_the_least_clients?"
         p Gym.least_user
       when "what_trainers_are_available?"
@@ -45,7 +47,7 @@ class Menu
         p "#{t.name} who has delivered #{t.num_workouts_with_weight_lifting} weight lifting sessions"
       when "end_session"
         p "ending session"
-        session = false
+        @@session = false
       end
     end 
   end
