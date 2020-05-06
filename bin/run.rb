@@ -1,11 +1,8 @@
 # TODO
-# create a cool hero title
-# color code responses
-# create a answer, and go back option
+# create a cool hero title x
+# color code responses 
+# create a answer, and go back option 
 # integrate more functions
-
-
-
 
 require 'pry'
 require_relative '../config/environment'
@@ -48,9 +45,9 @@ end
 
 def user_menu(user)
   session = true
-  puts `clear`
-  p "Welcome to your own personal workout portal #{user.name}!"
   while session do 
+    print_title
+    p "Welcome to your own personal workout portal #{user.name}!"
     option = $prompt.select("How can we help you today?", %w(
       what_gyms_are_available?
       which_gym_has_served_the_most_clients?
@@ -63,7 +60,6 @@ def user_menu(user)
     ))
     case option 
     when "what_is_my_total_weight_lifted?"
-      puts `clear`
       p user.total_weight_for_all_workouts
     when "what_gyms_are_available?"
       p Gym.all.map { |g| g.name }
@@ -88,7 +84,7 @@ end
 
 def main 
   user = nil 
-  p "Hello and welcome to the workout app"
+  print_title 
   option = $prompt.select("Please login or create an account", %w(login create_account))
   if option == "create_account"
     user = create_account
