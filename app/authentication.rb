@@ -24,7 +24,7 @@ class Authentication
     name = @@prompt.ask("What is your name?")
     gender = @@prompt.ask("What is your gender?")
     age = @@prompt.ask("What is your age?")
-    desired_workout = @@prompt.select("What is your desired style of workout?", %w(high_intensity low_intensity mild_intensity))
+    desired_workout = @@prompt.select("What is your desired style of workout?", %w(intense low_intensity mild))
     
     user = User.create(
       username: username,
