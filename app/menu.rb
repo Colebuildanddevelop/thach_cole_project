@@ -34,6 +34,7 @@ class Menu
         what_trainer_burned_the_most_calories?
         what_trainer_has_the_most_experience_lifting_weights?
         what_trainer_is_the_best_suited?
+        my_settings
         end_session
       ))
       case option 
@@ -42,7 +43,6 @@ class Menu
         display_response(["Congratulations on completing your workout!"])
       when "show_me_all_my_previous_workouts!"
         display_response(@user.workouts)
-        
       when "what_diet_plan_should_I_be_on?"
         display_response([@user.diet_plan_suggestion])
       when "what_is_my_total_weight_lifted?"
@@ -63,6 +63,8 @@ class Menu
         display_response(["#{t.name} who has delivered #{t.num_workouts_with_weight_lifting} weight lifting sessions"])
       when "what_trainer_is_the_best_suited?"
         display_response(["You should be trained by #{user.trainer_suggestion}"])
+      when "my_settings"
+        user_settings
       when "end_session"
         p "ending session"
         @@session = false
@@ -95,17 +97,67 @@ class Menu
     workout
   end 
 
-  def change_user_settings
+  def user_settings
     print_title 
     trainer_name = @@prompt.select("Chose a setting to update", %w(
       change_my_username
       change_my_password
       change_my_name 
-      
-    ))
-    
-
+      change_my_age
+      change_my_desired_workout
+      delete_my_account
+      go_back!
+    ))    
+    case trainer_name
+    when "change_my_username"
+      new_username = @@prompt.ask("Please type in your new username.")
+      while User.find_by(username: new_username)
+        puts "This username is already taken, please choose another"
+        new_username = @@prompt.ask("Type in your new username")
+      end  
+      @user.username = new_username
+      @user.save
+      display_response(["You changed your username to #{new_username}!"])
+    when "change_my_password"
+      new_password = @@prompt.mask("Please type in your new password.")
+      confirm_password = @@prompt.mask("Please confirm your new password.")
+      while (new_password != confirm_password) do
+        p "oops the passwords you entered did not match"
+        new_password = @@prompt.mask("Please type in your new password.")
+        confirm_password = @@prompt.mask("Please confirm your new password.")
+      end 
+      user.password = new_password
+      user.save
+      display_response(["You changed your password!"])
+    when "change_my_name"
+      new_name = @@prompt.ask("Please type in your new name.")
+      user.name = new_name
+      user.save
+      display_response(["You changed your name to #{new_name}"])
+    when "change_my_age"
+      new_age = @@prompt.ask("Please enter your age here.")
+      user.age = new_age
+      user.save
+      display_response(["You changed your age to #{new_age}"])
+    when "change_desired_workout"
+      new_desired_workout = @@prompt.select("Please chose a desired workout", %w(intense low_intensity mild))
+      user.desired_workout = new_desired_workout
+      user.save
+      display_response(["You changed your desired workout to #{desired_workout}"])
+    when "delete_my_account"
+      password = @@prompt.mask("Please enter your password")
+      if password == user.password
+        delete_your_account = @@prompt.yes?("Are you sure you want to delete your account?")
+        if delete_your_account
+          user.destroy
+          p "You have destroyed your account, hope you come back!"
+          @@session = false
+        else
+          display_response(["We are glad you didn't leave us!"])
+        end 
+      end 
+    when "go_back!"
+      user_menu
+    end 
   end 
-  
-   
 end 

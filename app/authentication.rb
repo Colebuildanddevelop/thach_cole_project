@@ -21,8 +21,13 @@ class Authentication
       username = @@prompt.ask("Please create a username.")
     end  
     password = @@prompt.mask("Please create a password.")
+    confirm_password = @@prompt.mask("please re-enter your password")
+    while (password != confirm_password) do
+      p "oops the passwords you entered did not match"
+      password = @@prompt.mask("please create a password")
+      confirm_password = @@prompt.mask("please confirm your password")
+    end 
     name = @@prompt.ask("What is your name?")
-   
     age = @@prompt.ask("What is your age?")
     desired_workout = @@prompt.select("What is your desired style of workout?", %w(intense low_intensity mild))
     
