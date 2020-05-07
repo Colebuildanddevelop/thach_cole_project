@@ -16,19 +16,7 @@
 
 > A workout app to help users workout efficiently
 
-**Badges will go here**
-
----
-
-## Table of Contents (Optional)
-
-- [Installation](#installation)
-- [Features](#features)
-- [Contributing](#contributing)
-- [Team](#team)
-- [FAQ](#faq)
-- [Support](#support)
-- [License](#license)
+[![Build Status](http://img.shields.io/travis/badges/badgerbadgerbadger.svg?style=flat-square)](https://travis-ci.org/badges/badgerbadgerbadger)
 
 ---
 
@@ -78,7 +66,7 @@ $ ruby bin/run.rb
 
 | <a href="https://github.com/Colebuildanddevelop" target="_blank">**Cole Davis**</a> | <a href="https://github.com/tedluu" target="_blank">**Thach Luu**</a>
 | :---: |:---:
-| [![FVCproductions](./imgs/cole.jpeg)](http://fvcproductions.com) | [![FVCproductions](./imgs/thach.jpg)](http://fvcproductions.com)
+| [![FVCproductions](https://avatars0.githubusercontent.com/u/57429854?s=460&u=453541e8f95a85e84b2cbf68124e0ad95d8f3a5c&v=4?s=200)](http://fvcproductions.com) | [![FVCproductions](https://avatars2.githubusercontent.com/u/54954787?s=460&u=e633dd682b85dbb271e088757cd8d00dfb4fcdc6&v=4?s=200)](http://fvcproductions.com)
 
 ---
 
