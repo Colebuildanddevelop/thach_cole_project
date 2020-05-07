@@ -5,7 +5,7 @@ Workout.delete_all
 
 
 jack = User.create(name: "Jack", username: "jack", password: "123", age: 18, desired_workout: "intense")
-ally = User.create(name: "Ally", username: "ally", password: "345", age: 55, desired_workout: "low-intensity")
+ally = User.create(name: "Ally", username: "ally", password: "345", age: 55, desired_workout: "low_intensity")
 sally = User.create(name: "Sally", username: "sally", password: "222", age: 35, desired_workout: "mild")
 aaron = User.create(name: "Aaron", username: "aaron", password: "234", age: 30, desired_workout: "low_intensity")
 emily = User.create(name: "Emily", username: "emily", password: "111", age: 26, desired_workout: "mild")

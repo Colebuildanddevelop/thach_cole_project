@@ -22,7 +22,7 @@ class Authentication
     end  
     password = @@prompt.mask("Please create a password.")
     name = @@prompt.ask("What is your name?")
-    gender = @@prompt.ask("What is your gender?")
+   
     age = @@prompt.ask("What is your age?")
     desired_workout = @@prompt.select("What is your desired style of workout?", %w(intense low_intensity mild))
     
@@ -30,7 +30,6 @@ class Authentication
       username: username,
       password: password,
       name: name,
-      gender: gender,
       age: age,
       desired_workout: desired_workout
     )  
