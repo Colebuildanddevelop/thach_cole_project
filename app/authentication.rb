@@ -7,8 +7,15 @@ class Authentication
     password = @@prompt.mask("Please enter your password.")
     while !User.find_by(username: username, password: password)
       puts "oops either the username you entered was not found or the password was incorrect"
+      option = @@prompt.select("Do you want to try again", ["Go back", "Try again"])
+      if option == "Go back"
+       return nil
+       
+        
+      end 
       username = @@prompt.ask("Please enter your username.")
       password = @@prompt.mask("Please enter your password.")
+     
     end
     User.find_by(username: username, password: password)
   end

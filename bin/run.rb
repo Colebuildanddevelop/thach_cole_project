@@ -16,7 +16,11 @@ def main
   if option == "create_account"
     menu = Menu.new(auth.create_account)
   else 
-    menu = Menu.new(auth.login)
+    user = auth.login
+    if user == nil 
+      main
+    end   
+    menu = Menu.new(user)
   end 
   menu.user_menu
   puts "Good bye! Thank you for using our services!"
