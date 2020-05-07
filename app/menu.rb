@@ -33,6 +33,7 @@ class Menu
         what_is_my_total_weight_lifted?
         what_trainer_burned_the_most_calories?
         what_trainer_has_the_most_experience_lifting_weights?
+        what_trainer_is_the_best_suited?
         end_session
       ))
       case option 
@@ -60,6 +61,8 @@ class Menu
       when "what_trainer_has_the_most_experience_lifting_weights?"
         t = Trainer.most_experience_with_lifting
         display_response(["#{t.name} who has delivered #{t.num_workouts_with_weight_lifting} weight lifting sessions"])
+      when "what_trainer_is_the_best_suited?"
+        display_response(["You should be trained by #{user.trainer_suggestion}"])
       when "end_session"
         p "ending session"
         @@session = false

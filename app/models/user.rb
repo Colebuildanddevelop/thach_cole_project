@@ -30,6 +30,18 @@ class User < ActiveRecord::Base
     end 
   end 
 
+  def trainer_suggestion
+    if self.desired_workout == "low-instensity"
+        a = Trainer.all.select {|t| t.temperament == "calm"}
+        return a.map {|t| t.name}.join(",")
+    elsif self.desired_workout == "mild"
+        a = Trainer.all.select {|t| t.temperament == "mild"}
+        return a.map {|t| t.name}.join(",")
+    elsif self.desired_workout == "intense"
+        a = Trainer.all.select {|t| t.temperament == "intense"}
+        return a.map {|t| t.name}.join(",")
+    end 
+end
 
   
 end 
