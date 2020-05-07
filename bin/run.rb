@@ -9,17 +9,16 @@ require_relative '../config/environment'
 $prompt = TTY::Prompt.new
 
 def main 
-  user = nil 
   auth = Authentication.new
-  menu = Menu.new
+  menu = nil
   print_title 
   option = $prompt.select("Please login or create an account", %w(login create_account))
   if option == "create_account"
-    user = auth.create_account
+    menu = Menu.new(auth.create_account)
   else 
-    user = auth.login
+    menu = Menu.new(auth.login)
   end 
-  menu.user_menu(user)
+  menu.user_menu
   puts "Good bye! Thank you for using our services!"
 end 
 
