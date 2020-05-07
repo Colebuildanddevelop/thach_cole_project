@@ -25,6 +25,7 @@ class Menu
       option = @@prompt.select("How can we help you today?", %w(
         i_want_to_record_a_workout
         show_me_all_my_previous_workouts!
+        what_trainer_is_the_best_suited?
         what_diet_plan_should_I_be_on?
         what_gyms_are_available?
         which_gym_has_served_the_most_clients?
@@ -33,7 +34,7 @@ class Menu
         what_is_my_total_weight_lifted?
         what_trainer_burned_the_most_calories?
         what_trainer_has_the_most_experience_lifting_weights?
-        what_trainer_is_the_best_suited?
+        
         end_session
       ))
       case option 
@@ -62,7 +63,7 @@ class Menu
         t = Trainer.most_experience_with_lifting
         display_response(["#{t.name} who has delivered #{t.num_workouts_with_weight_lifting} weight lifting sessions"])
       when "what_trainer_is_the_best_suited?"
-        display_response(["You should be trained by #{user.trainer_suggestion}"])
+        display_response(["You should be trained by any of the following trainers:", user.trainer_suggestion].flatten)
       when "end_session"
         p "ending session"
         @@session = false
