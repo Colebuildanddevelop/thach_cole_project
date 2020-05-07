@@ -42,7 +42,8 @@ class Menu
         create_workout
         display_response(["Congratulations on completing your workout!"])
       when "show_me_all_my_previous_workouts!"
-        display_response(@user.workouts)
+        resp = @user.workouts.map {|w| "at #{w.gym.name}, with #{w.trainer.name}, you lifted #{w.total_weight_lifted} lbs, burned #{w.calories_burned} within #{w.duration_of_workout_minutes} mins"}
+        display_response(resp)
         
       when "what_diet_plan_should_I_be_on?"
         display_response([@user.diet_plan_suggestion])
