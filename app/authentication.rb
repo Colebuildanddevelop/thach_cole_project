@@ -10,8 +10,6 @@ class Authentication
       option = @@prompt.select("Do you want to try again", ["Go back", "Try again"])
       if option == "Go back"
        return nil
-       
-        
       end 
       username = @@prompt.ask("Please enter your username.")
       password = @@prompt.mask("Please enter your password.")
