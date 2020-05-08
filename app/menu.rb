@@ -45,10 +45,9 @@ class Menu
         if @user.workouts.empty?
           display_response(["You have not done any workout session."])
         else
-        resp = @user.workouts.map {|w| "at #{w.gym.name}, with #{w.trainer.name}, you lifted #{w.total_weight_lifted} lbs, burned #{w.calories_burned} within #{w.duration_of_workout_minutes} mins"}
+        resp = @user.workouts.map {|w| "You trained at #{w.gym.name}, with #{w.trainer.name} as your trainer. You lifted #{w.total_weight_lifted} lbs, and burned #{w.calories_burned} within #{w.duration_of_workout_minutes} mins"}
         display_response(resp)
         end 
-        
       when "what_diet_plan_should_I_be_on?"
         display_response([@user.diet_plan_suggestion])
       when "what_is_my_total_weight_lifted?"
@@ -56,9 +55,9 @@ class Menu
       when "what_gyms_are_available?"
         display_response(Gym.all.map{ |gym| "#{gym.name}" })
       when "which_gym_has_served_the_most_clients?"
-        display_response(["According to our calculations #{Gym.most_user.name} is the gym with the most customers at #{Gym.most_user.workouts.length} customers"])
+        display_response(["According to our calculations #{Gym.most_user.name} is the gym with the most customers at #{Gym.most_user.workouts.length} customers."])
       when "which_gym_has_served_the_least_clients?"
-        display_response(["According to our calculations #{Gym.least_user.name} is the gym with the least customers at #{Gym.least_user.workouts.length} customers"])
+        display_response(["According to our calculations #{Gym.least_user.name} is the gym with the least customers at #{Gym.least_user.workouts.length} customers."])
       when "what_trainers_are_available?"
         display_response(Trainer.all.map { |t| "#{t.name}" })
       when "what_trainer_burned_the_most_calories?"
@@ -66,9 +65,9 @@ class Menu
         display_response(["#{t.name} who burned #{t.total_calories_burned} calories"])
       when "what_trainer_has_the_most_experience_lifting_weights?"
         t = Trainer.most_experience_with_lifting
-        display_response(["#{t.name} who has delivered #{t.num_workouts_with_weight_lifting} weight lifting sessions"])
+        display_response(["#{t.name} who has delivered #{t.num_workouts_with_weight_lifting} weight lifting sessions."])
       when "what_trainer_is_the_best_suited?"
-        display_response(["You should be trained by #{user.trainer_suggestion}"])
+        display_response(["Given your desire of a #{user.desired_workout} workout, you should be trained by #{user.trainer_suggestion}!"])
       when "my_settings"
         user_settings
       when "end_session"
