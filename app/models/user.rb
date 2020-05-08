@@ -41,15 +41,6 @@ class User < ActiveRecord::Base
         a = Trainer.all.select {|t| t.temperament == "intense"}
         return a.map {|t| t.name}
     end 
-end 
+  end 
 
-    def workout_summary
-        arr = []
-    self.workouts.each do |w|
-        
-           arr << w 
-        end 
-    
-    arr 
-    end 
 end 

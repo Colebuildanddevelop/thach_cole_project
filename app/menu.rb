@@ -67,7 +67,7 @@ class Menu
         t = Trainer.most_experience_with_lifting
         display_response(["#{t.name} who has delivered #{t.num_workouts_with_weight_lifting} weight lifting sessions."])
       when "what_trainer_is_the_best_suited?"
-        display_response(["Given your desire of a #{user.desired_workout} workout, you should be trained by #{user.trainer_suggestion}!"])
+        display_response(["Given your desire of a #{user.desired_workout} workout, you should be trained by any of the following:", user.trainer_suggestion].flatten)
       when "my_settings"
         user_settings
       when "end_session"

@@ -44,6 +44,10 @@ $ ruby bin/run.rb
 
 ---
 
+![Efficient Workout Gif](./imgs/workout-gif.gif)
+
+---
+
 ## Features
 
 - Username and password authentication.
